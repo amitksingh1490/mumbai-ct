@@ -1,0 +1,25 @@
+schema @server(graphiql: true) @upstream(batch: {delay: 1}){
+  query: Query
+}
+
+type Query {
+  hello: String @const(data: "Hello World!")
+  posts: [Post!]! @http(baseURL: "https://jsonplaceholder.typicode.com", path: "/posts") @cache(maxAge: 1000000)
+}
+
+type Post @cache(maxAge: 1000000) {
+  userId: ID!
+  id: ID!
+  title: String
+  body: String
+  user: User @http(baseURL: "https://jsonplaceholder.typicode.com", path: "/users" , query: [{key: "id", value: "{{value.userId}}"}], groupBy: ["id"])
+}
+
+type User {
+    id: ID!
+    name: String
+    username: String
+    email: String
+    phone: String @modify(name: "mobile")
+    website: String @modify(omit: true)
+}

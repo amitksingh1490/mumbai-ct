@@ -13,4 +13,4 @@ jobs:
     - name: Deploy on tailcall
       uses: tailcallhq/tailcall-deploy/.github/actions/deploy-action@main
       with:
-        file-path: 'clevertap/demo.graphql'
+        file-path: 'ctdemo.graphql'

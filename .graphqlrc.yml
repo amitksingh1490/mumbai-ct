@@ -1,0 +1,4 @@
+schema:
+- './.tailcallrc.graphql'
+- './ctdemo.graphql'
+    
