@@ -1,4 +1,4 @@
-name: Deploy Using Shared Action
+name: Deploy to Tailcall
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Deploy to Shared Infrastructure
-      uses: tailcallhq/tailcall/.github/actions/deploy-action@chore/gh-action-deploy
+    - name: Deploy on tailcall
+      uses: tailcallhq/tailcall-deploy/.github/actions/deploy-action@main
       with:
         file-path: 'clevertap/demo.graphql'
